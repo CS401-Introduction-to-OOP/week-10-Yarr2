@@ -7,6 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        // creating and adding characters and events to collection
         var character1 = new Character("Yarema",Role.Dwarf,200,900,level:3);
         var character2 = new Character("Rostik",Role.Bard,60,100);
         var character3 = new Character("Anna",Role.Elf,120,1200);
@@ -34,26 +35,50 @@ class Program
         eventLog.AddEvent(event3);
         eventLog.AddEvent(event4);
         eventLog.AddEvent(event5);
-        
-        // testing 'yield' methods 
-        foreach (var someEvent in eventLog.GetEventsOfType("Heal"))
+        // end of adding
+        bool running = true;
+        while (running)
         {
-            Console.WriteLine(someEvent);
-        }
+            Console.Write("Input your command > ");
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "quit":
+                {
+                    running = false;
+                    break;
+                }
+                case "help":
+                {
+                    Console.WriteLine("HELP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    throw new NotImplementedException();
+                }
+                case "filterByRole":
+                {
+                    Console.Write("Input role >");
+                    string role = Console.ReadLine();
+                    if (Role.TryParse(role, out Role newRole))
+                    {
+                        foreach (var character in party.FilterByRole(newRole))
+                        {
+                            Console.WriteLine(character);
+                        }
 
-        foreach (var character in party.GetActive())
-        {
-            Console.WriteLine(character);
-        }
-        // testing linq methods
-        foreach (var character in party.GetByLevel(3))
-        {
-            Console.WriteLine(character);
-        }
-
-        foreach (var someEvent in eventLog.GetSpecificSortedEvents("Steal"))
-        {
-            Console.WriteLine(someEvent);
+                        break;
+                    }
+                    Console.WriteLine("Incorrect role name, aborting command");
+                    break;
+                }
+                case "SortByMove":
+                {
+                    foreach (var someEvent in eventLog.SortByMove())
+                    {
+                        Console.WriteLine(someEvent);
+                    }
+                    break;
+                }
+            }
+            
         }
         
     }  
