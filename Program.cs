@@ -50,10 +50,18 @@ class Program
                 }
                 case "help":
                 {
-                    Console.WriteLine("HELP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                    throw new NotImplementedException();
+                    Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!HELP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                    Console.WriteLine("\n This is user friendly way of showing all avaliable commands here \n");
+                    Console.WriteLine("help - shows this text to you\n");
+                    Console.WriteLine("quit - to quit program");
+                    Console.WriteLine("filterByRole - after it you need to type some role out of Dwarf,Bard,Elf,Healer,Warrior and it will get you all characters with such role");
+                    Console.WriteLine("in case your role would not be in avaliable roles it will abort command");
+                    Console.WriteLine("\nSortByMove - outputs sorted events based on move when they will be done\n");
+                    Console.WriteLine("GetSTEvents - after this command you will need to input type of event you want to find and ");
+                    Console.WriteLine("output will be all such events sorted by ChangeOfCharacteristic parameter\n");
+                    break;
                 }
-                case "filterByRole":
+                case "filterByRole": // for yield showcase
                 {
                     Console.Write("Input role >");
                     string role = Console.ReadLine();
@@ -77,6 +85,18 @@ class Program
                     }
                     break;
                 }
+                case "GetSTEvents": // for LINQ showcase
+                {
+                    Console.Write("Input event type >");
+                    string eventType = Console.ReadLine();
+                    foreach (var someEvent in eventLog.GetSpecificSortedEvents(eventType))
+                    { 
+                        Console.WriteLine(someEvent);
+                    }
+                    break;
+                }
+                
+
             }
             
         }
