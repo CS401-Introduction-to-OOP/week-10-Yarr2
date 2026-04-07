@@ -14,4 +14,9 @@ public class Event
         TypeOfEvent = typeOfEvent;
         ChangeOfCharacteristic = changeOfCharacteristic;
     }
+
+    public override string ToString()
+    {
+        return $"Event of type {TypeOfEvent} executed at move {MoveNumber}, does {Description} and changes by {ChangeOfCharacteristic}";
+    }
 }

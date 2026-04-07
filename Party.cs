@@ -15,14 +15,21 @@ public class Party: IEnumerable<Character>
     {
         _characters.Remove(character);
     }
-    
+
+    public IEnumerable<Character> GetActive()
+    {
+        foreach (var character in _characters)
+        {
+            if (character.State == State.Active) yield return character;
+        }
+    }
         
     
     public IEnumerator<Character> GetEnumerator()
     {
         foreach (var character in _characters)
-        {
-            if (character.State == State.Active) yield return character;
+        { 
+            yield return character;
         }
     }
 

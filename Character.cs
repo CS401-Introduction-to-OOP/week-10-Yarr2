@@ -30,7 +30,11 @@ public class Character
         HitPoints = hitPoints;
         AmountGold = amountGold;
         State = state;
+        Level = level;
     }
-    
 
+    public override string ToString()
+    {
+        return $"{Name} with role {Role}, level: {Level}, gold: {AmountGold}, state - {State}";
+    }
 }

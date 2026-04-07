@@ -17,7 +17,7 @@ public class EventLog : IEnumerable<Event>
     }
 
 
-    public IEnumerator<Event> GetEventsOfType(string type)
+    public IEnumerable<Event> GetEventsOfType(string type)
     {
         foreach (var someEvent in _events)
         {
@@ -25,7 +25,7 @@ public class EventLog : IEnumerable<Event>
         }
     }
 
-public IEnumerator<Event> GetEnumerator()
+    public IEnumerator<Event> GetEnumerator()
     {
         return _events.GetEnumerator();
     }

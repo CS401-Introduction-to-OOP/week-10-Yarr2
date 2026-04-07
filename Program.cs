@@ -36,15 +36,16 @@ class Program
         eventLog.AddEvent(event5);
         
         // testing 'yield' methods 
-        foreach (var character in party)// to get all active characters
+        foreach (var someEvent in eventLog.GetEventsOfType("Heal"))
         {
-            Console.WriteLine(character.Name);
+            Console.WriteLine(someEvent);
         }
 
-        foreach (var someEvent in eventLog)
+        foreach (var character in party.GetActive())
         {
-            Console.WriteLine($"{someEvent.MoveNumber},{someEvent.TypeOfEvent}");
+            Console.WriteLine(character);
         }
         // testing linq methods
+        
     }  
 }
