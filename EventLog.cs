@@ -16,6 +16,16 @@ public class EventLog : IEnumerable<Event>
         _events.Remove(inputEvent);
     }
 
+    public IEnumerable<Event> SortByMove()
+    {
+        return _events.OrderBy(n => n.MoveNumber);
+    }
+    public IEnumerable<Event> GetSpecificSortedEvents(string eventType)
+    {
+        return _events
+            .Where(n => n.TypeOfEvent == eventType)
+            .OrderBy(n => n.ChangeOfCharacteristic);
+    }
 
     public IEnumerable<Event> GetEventsOfType(string type)
     {

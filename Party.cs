@@ -23,8 +23,20 @@ public class Party: IEnumerable<Character>
             if (character.State == State.Active) yield return character;
         }
     }
-        
-    
+
+    public IEnumerable<Character> GetByLevel(int level)
+    {
+        return _characters
+            .Where(n => (n.Level >= level));
+    }
+
+    public IEnumerable<Character> FilterByRole(Role role)
+    {
+        foreach (var character in _characters)
+        {
+            if (character.Role == role) yield return character;
+        }
+    }
     public IEnumerator<Character> GetEnumerator()
     {
         foreach (var character in _characters)

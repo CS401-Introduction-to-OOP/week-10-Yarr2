@@ -46,6 +46,15 @@ class Program
             Console.WriteLine(character);
         }
         // testing linq methods
+        foreach (var character in party.GetByLevel(3))
+        {
+            Console.WriteLine(character);
+        }
+
+        foreach (var someEvent in eventLog.GetSpecificSortedEvents("Steal"))
+        {
+            Console.WriteLine(someEvent);
+        }
         
     }  
 }
