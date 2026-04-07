@@ -5,6 +5,7 @@ namespace Practice10;
 public class EventLog : IEnumerable<Event>
 {
     private List<Event> _events = new List<Event>();
+
     public void AddEvent(Event inputEvent)
     {
         _events.Add(inputEvent);
@@ -16,7 +17,15 @@ public class EventLog : IEnumerable<Event>
     }
 
 
-    public IEnumerator<Event> GetEnumerator()
+    public IEnumerator<Event> GetEventsOfType(string type)
+    {
+        foreach (var someEvent in _events)
+        {
+            if (someEvent.TypeOfEvent == type) yield return someEvent;
+        }
+    }
+
+public IEnumerator<Event> GetEnumerator()
     {
         return _events.GetEnumerator();
     }
